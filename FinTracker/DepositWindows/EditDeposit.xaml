@@ -1,0 +1,80 @@
+﻿<Window x:Class="FinTracker.DepositWindows.EditDeposit"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:FinTracker.DepositWindows"
+        mc:Ignorable="d"
+        Title="EditDeposit" Height="412" Width="500">
+    <Window.Resources>
+        <Style x:Key="{x:Type Button}">
+            <Setter Property="Control.Background" Value="#60D6A9"/>
+            <Setter Property="Control.FontWeight" Value="Bold"/>
+            <Setter Property="Control.Foreground" Value="GhostWhite"/>
+            <Setter Property="Control.Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border CornerRadius="10" Background="{TemplateBinding Background}">
+                            <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                              VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="Control.IsMouseOver" Value="True">
+                    <Setter Property="Control.Background" Value="#35D59D"></Setter>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+        <Style x:Key="{x:Type Label}">
+            <Setter Property="Control.Foreground" Value="#800000"/>
+            <Setter Property="Control.FontWeight" Value="SemiBold"/>
+            <Setter Property="Control.FontSize" Value="14"/>
+        </Style>
+        <Style x:Key="{x:Type TextBox}">
+            <Setter Property="Control.BorderBrush" Value="#800000"/>
+            <Setter Property="Control.FontSize" Value="14"/>
+            <Setter Property="Control.Height" Value="25"/>
+            <Setter Property="Control.Width" Value="135"/>
+        </Style>
+    </Window.Resources>
+    <Grid Background="AntiqueWhite" Margin="0,0,0,-6">
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Label Content="Добавить вклад" FontSize="13" FontWeight="Bold" HorizontalAlignment="Left" Margin="13,10,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.422,-0.928"/>
+        <Label Content="Сумма" FontWeight="SemiBold" HorizontalAlignment="Left" Margin="300,45,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.299,0.937"/>
+        <TextBox x:Name="TextBoxEditDepositAmount" Background="White" BorderBrush="#e38b75" HorizontalAlignment="Left" Margin="300,74,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="120"/>
+        <DatePicker x:Name="DatePickerEditDepositStart" Background="White" BorderBrush="#800000" HorizontalAlignment="Left" Margin="158,107,0,0" VerticalAlignment="Top" Width="120" Height="32">
+            <DatePicker.CalendarStyle>
+                <Style TargetType="{x:Type Calendar}">
+                    <Style.Resources>
+                        <SolidColorBrush x:Key="PrimaryHueMidBrush" Color="#61B4CF" />
+                    </Style.Resources>
+                    <Style.BasedOn>
+                        <StaticResource ResourceKey="MaterialDesignCalendarPortrait"/>
+                    </Style.BasedOn>
+                </Style>
+            </DatePicker.CalendarStyle>
+        </DatePicker>
+        <CheckBox x:Name="CheckBoxEditWithdrawable" Foreground="#800000" FontWeight="SemiBold" Background="#800000" Content="С возможностью снятия" HorizontalAlignment="Left" Margin="273,214,0,0" VerticalAlignment="Top" Width="166"/>
+        <CheckBox x:Name="CheckBoxEditСapitalization" Foreground="#800000" FontWeight="SemiBold" Background="#800000" Content="Капитализация" HorizontalAlignment="Left" Margin="273,260,0,0" VerticalAlignment="Top" Width="196" Unchecked="CheckBoxEditСapitalization_Unchecked" Checked="CheckBoxEditСapitalization_Checked"/>
+        <CheckBox x:Name="CheckBoxEditPutable" Foreground="#800000" FontWeight="SemiBold" Background="#800000" Content="С возможностью пополнения" HorizontalAlignment="Left" Margin="273,237,0,0" VerticalAlignment="Top" Width="196"/>
+        <Label Content="Дата открытия" FontWeight="SemiBold" HorizontalAlignment="Left" Margin="13,115,0,0" VerticalAlignment="Top"/>
+        <Label Content="Срок вклада" FontWeight="SemiBold" HorizontalAlignment="Left" Margin="13,151,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="ButtonEditDeposit" Content="Сохранить" Background ="#60D6A9" BorderBrush="#60D6A9" HorizontalAlignment="Center" Margin="0,321,0,0" VerticalAlignment="Top" Width="400" Height="40" FontSize="16" Click="ButtonEditDeposit_Click"/>
+        <ComboBox x:Name="ComboBoxEditDepositSpendAsset" BorderBrush="#800000" Background="White" HorizontalAlignment="Left" Margin="16,253,0,0" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="TextBoxEditNameAsset" HorizontalAlignment="Left" Margin="16,74,0,0" TextWrapping="Wrap" Text="Вклад" VerticalAlignment="Top" Width="123"/>
+        <TextBox x:Name="TextBoxEditPercent" HorizontalAlignment="Left" Margin="179,194,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="47"/>
+        <ComboBox x:Name="ComboBoxEditPeriod" BorderBrush="#800000" Background="White" HorizontalAlignment="Left" Margin="300,150,0,0" VerticalAlignment="Top" Width="120"/>
+        <Label Content="Название вклада" FontWeight="SemiBold" HorizontalAlignment="Left" Margin="13,45,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.299,0.937"/>
+        <Label Content="Годовой % по вкладу" FontWeight="Bold" HorizontalAlignment="Left" Margin="13,192,0,0" VerticalAlignment="Top"/>
+        <Label Content="Банк" FontWeight="SemiBold" HorizontalAlignment="Left" Margin="158,45,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="TextBoxEditBankName" HorizontalAlignment="Left" Margin="158,74,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <Label Content="Период начисления" FontWeight="SemiBold" HorizontalAlignment="Left" Margin="300,115,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.299,0.937"/>
+        <Label Content="Выберите счет для начисления %" FontWeight="SemiBold" HorizontalAlignment="Left" Margin="13,224,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="TextBoxEditTermDeposit" HorizontalAlignment="Left" Margin="158,151,0,0" TextWrapping="Wrap" Text="1" VerticalAlignment="Top" Width="120"/>
+
+    </Grid>
+</Window>

@@ -1,0 +1,58 @@
+﻿<Window x:Class="FinTracker.AddExtraPayment"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:FinTracker"
+        mc:Ignorable="d"
+        Title="Досрочный платёж" Height="228" Width="216">
+    <Window.Resources>
+        <Style x:Key="{x:Type Button}">
+            <Setter Property="Control.Background" Value="#60D6A9"/>
+            <Setter Property="Control.FontWeight" Value="Bold"/>
+            <Setter Property="Control.Foreground" Value="GhostWhite"/>
+            <Setter Property="Control.Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border CornerRadius="8" Background="{TemplateBinding Background}">
+                            <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                              VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="Control.IsMouseOver" Value="True">
+                    <Setter Property="Control.Background" Value="#35D59D"></Setter>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
+    <Grid Background="AntiqueWhite" Margin="0,0,0,-6">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="70*"/>
+            <ColumnDefinition Width="149*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition  />
+            <RowDefinition  />
+            <RowDefinition />
+            <RowDefinition  />
+
+        </Grid.RowDefinitions>
+        <DatePicker x:Name="DatePickerOfExtraPayment" BorderBrush="#800000" Background="White" HorizontalAlignment="Left" VerticalAlignment="Top" Height="24" Width="112" Margin="4,15,0,0" Grid.Column="1">
+            <DatePicker.CalendarStyle>
+                <Style TargetType="Calendar" BasedOn="{StaticResource MaterialDesignCalendarPortrait}">
+                    <Style.Resources>
+                        <SolidColorBrush x:Key="PrimaryHueMidBrush" Color="#61B4CF"/>
+                    </Style.Resources>
+                </Style>
+            </DatePicker.CalendarStyle>
+        </DatePicker>
+        <TextBlock HorizontalAlignment="Left" Foreground="#800000" FontWeight="SemiBold" Grid.Row="1" TextWrapping="Wrap" Text="Сумма" VerticalAlignment="Center" Height="19" Width="50" Margin="10,0,0,0"/>
+        <TextBox x:Name="TextBoxAmountOfExtraPayment" BorderBrush="#800000" Background="White" HorizontalAlignment="Left" Margin="4,0,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Center" Width="133" Grid.Column="1" Height="23" TextChanged="TextBoxAmountOfExtraPayment_TextChanged" PreviewTextInput="TextBoxAmountOfExtraPayment_PreviewTextInput"/>
+        <TextBlock HorizontalAlignment="Left" Foreground="#800000" FontWeight="SemiBold" Grid.Row="2" TextWrapping="Wrap" Text="Цель" VerticalAlignment="Center" Margin="10,0,0,0" Width="35" Height="19"/>
+        <ComboBox x:Name="ComboBoxExtraPaymentPurpose" BorderBrush="#800000" Background="White" Grid.Column="1" HorizontalAlignment="Left" Margin="4,0,0,0" Grid.Row="2" VerticalAlignment="Center" Width="133" Height="23" SelectedIndex="0"/>
+        <Button x:Name="ButtonCreateExtraPayment" Content="Создать" HorizontalAlignment="Left" Margin="39,5,0,0" Grid.Row="3" VerticalAlignment="Top" Grid.ColumnSpan="2" Width="138" Click="ButtonCreateExtraPayment_Click" Height="34"/>
+    </Grid>
+</Window>
